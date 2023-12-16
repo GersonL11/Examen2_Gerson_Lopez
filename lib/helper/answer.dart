@@ -9,7 +9,7 @@ class ApiAnswer {
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      List<dynamic> data = json.decode(response.body);
+      List<dynamic>tdata = json.decode(response.body);
       List<Respuesta> respuestas = data.map((item) => Respuesta.fromJson(item)).toList();
       return respuestas;
     } else {

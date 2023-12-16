@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => BookListProvider()),
       ],
       child: MaterialApp(
-        title: 'LIBRERIA',
+        title: 'Libreria',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

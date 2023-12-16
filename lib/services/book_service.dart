@@ -25,10 +25,10 @@ class BookService {
         if (bookDataList.isNotEmpty) {
           return bookDataList.map((book) => Book.fromJson(book)).toList();
         } else {
-          throw Exception('No books found in the response data');
+          throw Exception('No se encontraron libros');
         }
       } else {
-        throw Exception('Failed to load books: ${response.statusCode}');
+        throw Exception('Error al cargar los libros: ${response.statusCode}');
       }
     } catch (e) {
       print('Error fetching books: $e');

@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 class Book {
   final String id;
@@ -12,6 +12,8 @@ class Book {
   final DateTime createdAt;
   final List<Map<String, dynamic>> villains;
   final String description;
+  
+  var isMarked;
 
   Book({
     required this.id,
@@ -25,6 +27,7 @@ class Book {
     required this.createdAt,
     required this.villains,
     required this.description,
+    this.isMarked = false,
   });
 
   factory Book.fromJson(Map<String, dynamic> json) {

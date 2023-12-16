@@ -1,35 +1,34 @@
-import 'package:examenp3_gersonlopez/providers/respuesta_provider.dart';
+import 'package:examenp3_gersonlopez/screens/book_listScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:examenp3_gersonlopez/providers/book_list_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:examenp3_gersonlopez/screens/bookDetails_screen.dart';
 
-import 'presentation/screens/home_screen.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final respuestaProvider = RespuestaProvider();
-  await respuestaProvider.loadRespuesta();
-
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value: respuestaProvider),
-      ],
-      child: const MainApp(),
-    ),
-  );
+void main() {
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => BookListProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Stephen King Library',
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Your App Title'),
+          ),
+          body:
+              bookListScreen(), 
+        ),
       ),
-      home: Home(),
     );
   }
 }
